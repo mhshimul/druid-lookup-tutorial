@@ -1,0 +1,58 @@
+{
+  "type": "index",
+  "spec": {
+    "dataSchema": {
+      "dataSource": "meetup-country",
+      "parser": {
+        "type": "string",
+        "parseSpec": {
+          "format": "json",
+          "flattenSpec": {
+            "useFieldDiscovery": true,
+            "fields": [
+              {
+                "type": "jq",
+                "name": "country_code",
+                "expr": ".group.group_country"
+              }
+            ]
+          },
+          "timestampSpec": {
+            "column": "mtime",
+            "format": "auto"
+          },
+          "dimensionsSpec": {
+            "dimensions": [
+              "country_code"
+            ]
+          }
+        }
+      },
+      "metricsSpec": [
+        {
+          "type": "count",
+          "name": "count"
+        }
+      ],
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "DAY",
+        "queryGranularity": "NONE",
+        "rollup": false
+      }
+    },
+    "ioConfig": {
+      "type": "index",
+      "firehose": {
+        "type": "local",
+        "baseDir": "..",
+        "filter": "meetup.json"
+      },
+      "appendToExisting": false
+    },
+    "tuningConfig": {
+      "forceExtendableShardSpecs": true,
+      "type": "index"
+    }
+  }
+}

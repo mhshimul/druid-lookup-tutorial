@@ -1,0 +1,24 @@
+{
+  "queryType": "topN",
+  "dataSource": "meetup-country",
+  "intervals": "2018-11-01T21:39Z/2018-11-02T21:39Z",
+  "granularity": "all",
+  "dimension": {
+    "type": "extraction",
+    "dimension": "country_code",
+    "outputName": "Country Name",
+    "extractionFn": {
+      "type": "registeredLookup",
+      "lookup": "country"
+    }
+  },
+  "aggregations": [
+    {
+      "name": "Count",
+      "type": "doubleSum",
+      "fieldName": "count"
+    }
+  ],
+  "metric": "Count",
+  "threshold": 10
+}

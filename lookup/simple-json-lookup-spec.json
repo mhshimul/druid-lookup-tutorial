@@ -1,0 +1,19 @@
+{
+   "__default": {
+     "country": {
+       "version": "v4",
+       "lookupExtractorFactory": {
+         "type": "cachedNamespace",
+         "extractionNamespace": {
+           "type": "uri",
+           "uri": "file:/lookup/country-data-simple.json",
+           "namespaceParseSpec": {
+             "format": "simpleJson"
+           },
+           "pollPeriod": "PT30S"
+         },
+         "firstCacheTimeout": 0
+       }
+     }
+   }
+ }

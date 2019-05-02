@@ -1,0 +1,23 @@
+{
+   "__default": {
+     "country": {
+       "version": "v1",
+       "lookupExtractorFactory": {
+         "type": "cachedNamespace",
+         "extractionNamespace": {
+           "type": "uri",
+           "uri": "file:/lookup/country-data.csv",
+           "namespaceParseSpec": {
+             "format": "csv",
+             "columns": [
+              "key",
+              "value"
+             ]
+           },
+           "pollPeriod": "PT30S"
+         },
+         "firstCacheTimeout": 0
+       }
+     }
+   }
+ }
